@@ -21,14 +21,14 @@ functions:
     handler: functions/wordList/index.handler
     events:
       - httpApi:
-          path: '/word_list'
+          path: '/wordList'
           method: GET
 
   wordCount:
     handler: functions/wordCount/index.handler
     events:
       - httpApi:
-          path: '/word_count'
+          path: '/wordCount'
           method: GET
 
   summary:
