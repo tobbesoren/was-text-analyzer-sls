@@ -1,0 +1,48 @@
+service: aws-text-analyzer-api-sls
+frameworkVersion: '3'
+
+plugins:
+  - serverless-webpack
+
+package:
+  individually: true
+
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  profile: tobbesoren_test
+  region: eu-north-1
+  iam:
+    role: arn:aws:iam::564920371550:role/tobbesoren-ma22
+
+functions:
+  wordList:
+    handler: lambda_functions/wordList/index.handler
+    events:
+      - httpApi:
+          path: '/word_list'
+          method: GET
+
+  wordCount:
+    handler: lambda_functions/wordCount/index.handler
+    events:
+      - httpApi:
+          path: '/word_count'
+          method: GET
+
+  summary:
+    handler: lambda_functions/summary/index.handler
+    events:
+      - httpApi:
+          path: '/summary'
+          method: GET
+
+  wordFrequency:
+      handler: lambda_functions/wordFrequency/index.handler
+      events:
+        - httpApi:
+            path: '/word_frequency'
+            method: GET
+
+  
